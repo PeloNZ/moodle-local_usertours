@@ -68,6 +68,10 @@ class tour extends external_api {
         ];
     }
 
+    public static function fetch_tour_is_allowed_from_ajax() {
+        return true;
+    }
+
     /**
      * The parameters for fetch_tour.
      *
@@ -78,6 +82,10 @@ class tour extends external_api {
             'tourid' => new external_value(PARAM_INT, 'Tour ID'),
             'context' => new external_value(PARAM_INT, 'Context ID'),
         ]);
+    }
+
+    public static function fetch_tour_parameters_is_allowed_from_ajax() {
+        return true;
     }
 
     /**
@@ -113,6 +121,10 @@ class tour extends external_api {
         ]);
     }
 
+    public static function fetch_tour_returns_is_allowed_from_ajax() {
+        return true;
+    }
+
     /**
      * Reset the specified tour for the current user.
      *
@@ -139,6 +151,10 @@ class tour extends external_api {
         return $result;
     }
 
+    public static function reset_tour_is_allowed_from_ajax() {
+        return true;
+    }
+
     /**
      * The parameters for reset_tour.
      *
@@ -151,6 +167,10 @@ class tour extends external_api {
         ]);
     }
 
+    public static function reset_tour_parameters_is_allowed_from_ajax() {
+        return true;
+    }
+
     /**
      * The return configuration for reset_tour.
      *
@@ -160,6 +180,10 @@ class tour extends external_api {
         return new external_single_structure([
             'startTour'     => new external_value(PARAM_INT, 'Tour ID', VALUE_OPTIONAL),
         ]);
+    }
+
+    public static function reset_tour_returns_is_allowed_from_ajax() {
+        return true;
     }
 
     /**
@@ -180,6 +204,10 @@ class tour extends external_api {
         return [];
     }
 
+    public static function complete_tour_is_allowed_from_ajax() {
+        return true;
+    }
+
     /**
      * The parameters for complete_tour f.
      *
@@ -191,6 +219,10 @@ class tour extends external_api {
         ]);
     }
 
+    public static function complete_tour_parameters_is_allowed_from_ajax() {
+        return true;
+    }
+
     /**
      * The return configuration for complete_tour.
      *
@@ -198,5 +230,9 @@ class tour extends external_api {
      */
     public static function complete_tour_returns() {
         return new external_single_structure([]);
+    }
+
+    public static function complete_tour_returns_is_allowed_from_ajax() {
+        return true;
     }
 }

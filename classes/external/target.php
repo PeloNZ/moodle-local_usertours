@@ -61,6 +61,10 @@ class target extends external_api {
         return $result;
     }
 
+    public static function get_target_types_is_allowed_from_ajax() {
+        return true;
+    }
+
     /**
      * The parameters for get_target_types.
      *
@@ -68,6 +72,10 @@ class target extends external_api {
      */
     public static function get_target_types_parameters() {
         return new external_function_parameters([]);
+    }
+
+    public static function get_target_types_parameters_is_allowed_from_ajax() {
+        return true;
     }
 
     /**
@@ -82,6 +90,10 @@ class target extends external_api {
                 'title'     => new external_value(PARAM_TEXT, 'Title of the target'),
             ])
         );
+    }
+
+    public static function get_target_types_returns_is_allowed_from_ajax() {
+        return true;
     }
 
     /**
@@ -108,6 +120,10 @@ class target extends external_api {
         ];
     }
 
+    public static function set_target_is_allowed_from_ajax() {
+        return true;
+    }
+
     /**
      * The parameters for get_target_types.
      *
@@ -120,6 +136,10 @@ class target extends external_api {
         ]);
     }
 
+    public static function set_target_parameters_is_allowed_from_ajax() {
+        return true;
+    }
+
     /**
      * The return configuration for set_target.
      *
@@ -129,5 +149,9 @@ class target extends external_api {
         return new external_single_structure([
             'redirectTo'    => new external_value(PARAM_URL, 'URL to redirect to'),
         ]);
+    }
+
+    public static function set_target_returns_is_allowed_from_ajax() {
+        return true;
     }
 }

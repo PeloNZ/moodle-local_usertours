@@ -25,7 +25,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->version   = 2015111606;            // The current module version (Date: YYYYMMDDXX)
-$plugin->requires  = 2015111600;            // Requires this Moodle version
+$plugin->requires  = 2015051109;            // Requires this Moodle version
 $plugin->component = 'local_usertours';      // Full name of the plugin (used for diagnostics)
 $plugin->release = '3.0 (Build: 2015111606)';
-$plugin->maturity = MATURITY_STABLE;
+$plugin->maturity = MATURITY_BETA;

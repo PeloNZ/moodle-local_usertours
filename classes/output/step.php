@@ -58,8 +58,8 @@ class step implements \renderable {
         $step = $this->step;
 
         $result =  (object) [
-            'title'     => external_format_string(static::get_string_from_input($step->get_title()), $PAGE->context->id, true),
-            'content'   => external_format_string(static::get_string_from_input($step->get_content()), $PAGE->context->id, true),
+            'title'     => format_string(static::get_string_from_input($step->get_title()), $PAGE->context->id, true),
+            'content'   => format_string(static::get_string_from_input($step->get_content()), $PAGE->context->id, true),
             'element'   => $step->get_target()->convert_to_css(),
         ];
 

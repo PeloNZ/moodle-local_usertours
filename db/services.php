@@ -20,6 +20,22 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+$services = array(
+    'User Tours Web Services' => array(
+        'functions' => array (
+            'local_usertours_get_targettypes',
+            'local_usertours_set_target',
+            'local_usertours_fetch_tour',
+            'local_usertours_complete_tour',
+            'local_usertours_reset_tour'
+        ), // Web service functions of this service.
+        'requiredcapability' => '',
+        'restrictedusers' => 0,
+        'enabled' => 1,
+        'shortname' => 'local_usertours'
+    )
+);
+
 $functions = array(
     'local_usertours_get_targettypes' => array(
         'classname'       => 'local_usertours\external\target',
@@ -27,7 +43,6 @@ $functions = array(
         'description'     => 'Fetch all target types',
         'type'            => 'read',
         'capabilities'    => 'moodle/site:config',
-        'ajax'            => true,
     ),
 
     'local_usertours_set_target' => array(
@@ -36,7 +51,6 @@ $functions = array(
         'description'     => 'Set the target value and fetch the next step',
         'type'            => 'read',
         'capabilities'    => 'moodle/site:config',
-        'ajax'            => true,
     ),
 
     'local_usertours_fetch_tour' => array(
@@ -45,7 +59,6 @@ $functions = array(
         'description'     => 'Fetch the specified tour',
         'type'            => 'read',
         'capabilities'    => '',
-        'ajax'            => true,
     ),
 
     'local_usertours_complete_tour' => array(
@@ -54,7 +67,6 @@ $functions = array(
         'description'     => 'Mark the specified tour as completed for the current user',
         'type'            => 'write',
         'capabilities'    => '',
-        'ajax'            => true,
     ),
     'local_usertours_reset_tour' => array(
         'classname'       => 'local_usertours\external\tour',
@@ -62,6 +74,5 @@ $functions = array(
         'description'     => 'Remove the specified tour',
         'type'            => 'write',
         'capabilities'    => '',
-        'ajax'            => true,
     ),
 );
