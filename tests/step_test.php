@@ -789,4 +789,50 @@ class step_testcase extends advanced_testcase {
         $this->assertEquals($value, $step->$getter());
     }
 
+    /**
+     * Override the getMock method to allow abstract methods to be included in the mock class.
+     * Returns a mock object for the specified class.
+     *
+     * @param  string     $originalClassName       Name of the class to mock.
+     * @param  array|null $methods                 When provided, only methods whose names are in the array
+     *                                             are replaced with a configurable test double. The behavior
+     *                                             of the other methods is not changed.
+     *                                             Providing null means that no methods will be replaced.
+     * @param  array      $arguments               Parameters to pass to the original class' constructor.
+     * @param  string     $mockClassName           Class name for the generated test double class.
+     * @param  boolean    $callOriginalConstructor Can be used to disable the call to the original class' constructor.
+     * @param  boolean    $callOriginalClone       Can be used to disable the call to the original class' clone constructor.
+     * @param  boolean    $callAutoload            Can be used to disable __autoload() during the generation of the test double class.
+     * @param  boolean    $cloneArguments
+     * @return PHPUnit_Framework_MockObject_MockObject
+     * @throws PHPUnit_Framework_Exception
+     * @since  Method available since Release 3.0.0
+     */
+    public function getMock($originalClassName, $methods = array(), array $arguments = array(), $mockClassName = '',
+        $callOriginalConstructor = TRUE, $callOriginalClone = TRUE, $callAutoload = TRUE) {
+        if ($methods !== null) {
+            $methods = array_unique(array_merge($methods,
+                self::getAbstractMethods($originalClassName, $callAutoload)));
+        }
+        return parent::getMock($originalClassName, $methods, $arguments, $mockClassName, $callOriginalConstructor, $callOriginalClone, $callAutoload);
+    }
+
+    /**
+     * Returns an array containing the names of the abstract methods in <code>$class</code>.
+     *
+     * @param string $class name of the class
+     * @return array zero or more abstract methods names
+     */
+    public static function getAbstractMethods($class, $autoload=true) {
+        $methods = array();
+        if (class_exists($class, $autoload) || interface_exists($class, $autoload)) {
+            $reflector = new ReflectionClass($class);
+            foreach ($reflector->getMethods() as $method) {
+                if ($method->isAbstract()) {
+                    $methods[] = $method->getName();
+                }
+            }
+        }
+        return $methods;
+    }
 }
