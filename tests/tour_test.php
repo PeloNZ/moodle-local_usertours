@@ -33,6 +33,7 @@ require_once($CFG->libdir . '/formslib.php');
  * @package    local_usertours
  * @copyright  2016 Andrew Nicols <andrew@nicols.co.uk>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @group local_usertours
  */
 class tour_testcase extends advanced_testcase {
 
