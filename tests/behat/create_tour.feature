@@ -12,7 +12,7 @@ Feature: Add a new user tour
     And I log in as "admin"
     And I add a new user tour with:
       | Name                | First tour |
-      | Comments            | My first tour |
+      | Description | My first tour |
       | Apply to URL match  | /my/% |
       | Enabled             | 1 |
     And I add steps to the "First tour" tour:
@@ -23,7 +23,7 @@ Feature: Add a new user tour
       | Block                       | Course overview   | Course overview   | This area shows you what's happening in some of your courses  |
       | Block                       | Calendar          | Calendar          | This is the Calendar. All of your assignments and due dates can be found here |
       | Selector                    | .usermenu         | User menu         | This is your personal user menu. You'll find your personal preferences and your user profile here. |
-    When I click on "Dashboard" "link" in the "Navigation" "block"
+    When I click on "My learning" "link" in the "Navigation" "block"
     Then I should see "Welcome to your personal learning space. We'd like to give you a quick tour to show you some of the areas you may find helpful"
     And I press "Next »"
     And I should see "This area shows you what's happening in some of your courses"
@@ -36,7 +36,7 @@ Feature: Add a new user tour
     And I should see "This area shows you what's happening in some of your courses"
     And I press "End tour"
     And I should not see "This area shows you what's happening in some of your courses"
-    And I click on "Dashboard" "link" in the "Navigation" "block"
+    And I click on "My learning" "link" in the "Navigation" "block"
     And I should not see "Welcome to your personal learning space. We'd like to give you a quick tour to show you some of the areas you may find helpful"
     And I should not see "This area shows you what's happening in some of your courses"
     And I follow "Reset user tour on this page"
@@ -50,13 +50,13 @@ Feature: Add a new user tour
     And I log in as "admin"
     And I add a new user tour with:
       | Name                | First tour |
-      | Comments            | My first tour |
+      | Description | My first tour |
       | Apply to URL match  | /my/% |
       | Enabled             | 0 |
     And I add steps to the "First tour" tour:
       | targettype                  | Title             | Content |
       | Display in middle of page   | Welcome           | Welcome to your personal learning space. We'd like to give you a quick tour to show you some of the areas you may find helpful |
-    When I click on "Dashboard" "link" in the "Navigation" "block"
+    When I click on "My learning" "link" in the "Navigation" "block"
     Then I should not see "Welcome to your personal learning space. We'd like to give you a quick tour to show you some of the areas you may find helpful"
 
   @javascript
@@ -67,7 +67,7 @@ Feature: Add a new user tour
     And I log in as "admin"
     And I add a new user tour with:
       | Name                | First tour |
-      | Comments            | My first tour |
+      | Description | My first tour |
       | Apply to URL match  | /my/% |
       | Enabled             | 0 |
     And I add steps to the "First tour" tour:
@@ -75,5 +75,5 @@ Feature: Add a new user tour
       | Display in middle of page   | Welcome           | Welcome to your personal learning space. We'd like to give you a quick tour to show you some of the areas you may find helpful |
     And I open the User tour settings page
     When I click on "Enable" "link" in the "My first tour" "table_row"
-    And I click on "Dashboard" "link" in the "Navigation" "block"
+    And I click on "My learning" "link" in the "Navigation" "block"
     Then I should see "Welcome to your personal learning space. We'd like to give you a quick tour to show you some of the areas you may find helpful"
